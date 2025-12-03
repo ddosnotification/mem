@@ -108,45 +108,45 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ===============================================
-// PARTICLES.JS CONFIGURATION
+// PARTICLES.JS CONFIGURATION - ENHANCED
 // ===============================================
 if (typeof particlesJS !== 'undefined') {
     particlesJS('particles-js', {
         particles: {
             number: {
-                value: 80,
+                value: 120,
                 density: {
                     enable: true,
                     value_area: 800
                 }
             },
             color: {
-                value: ['#ff0080', '#ff6b9d', '#8b5cf6']
+                value: ['#ff0080', '#ff6b9d', '#8b5cf6', '#ff1a8c']
             },
             shape: {
-                type: 'circle',
+                type: ['circle', 'triangle'],
                 stroke: {
                     width: 0,
                     color: '#000000'
                 }
             },
             opacity: {
-                value: 0.5,
+                value: 0.6,
                 random: true,
                 anim: {
                     enable: true,
-                    speed: 1,
+                    speed: 1.5,
                     opacity_min: 0.1,
                     sync: false
                 }
             },
             size: {
-                value: 3,
+                value: 4,
                 random: true,
                 anim: {
                     enable: true,
-                    speed: 2,
-                    size_min: 0.1,
+                    speed: 3,
+                    size_min: 0.3,
                     sync: false
                 }
             },
@@ -154,12 +154,12 @@ if (typeof particlesJS !== 'undefined') {
                 enable: true,
                 distance: 150,
                 color: '#ff0080',
-                opacity: 0.2,
-                width: 1
+                opacity: 0.3,
+                width: 1.5
             },
             move: {
                 enable: true,
-                speed: 2,
+                speed: 2.5,
                 direction: 'none',
                 random: true,
                 straight: false,
@@ -167,8 +167,8 @@ if (typeof particlesJS !== 'undefined') {
                 bounce: false,
                 attract: {
                     enable: true,
-                    rotateX: 600,
-                    rotateY: 1200
+                    rotateX: 800,
+                    rotateY: 1400
                 }
             }
         },
@@ -177,7 +177,7 @@ if (typeof particlesJS !== 'undefined') {
             events: {
                 onhover: {
                     enable: true,
-                    mode: 'grab'
+                    mode: ['grab', 'bubble']
                 },
                 onclick: {
                     enable: true,
@@ -187,13 +187,20 @@ if (typeof particlesJS !== 'undefined') {
             },
             modes: {
                 grab: {
-                    distance: 140,
+                    distance: 180,
                     line_linked: {
-                        opacity: 0.5
+                        opacity: 0.7
                     }
                 },
+                bubble: {
+                    distance: 200,
+                    size: 8,
+                    duration: 2,
+                    opacity: 0.8,
+                    speed: 3
+                },
                 push: {
-                    particles_nb: 4
+                    particles_nb: 6
                 }
             }
         },
@@ -402,40 +409,303 @@ statsNumbers.forEach(stat => {
 });
 
 // ===============================================
-// PARALLAX EFFECT FOR HERO
+// ENHANCED PARALLAX EFFECTS FOR HERO
 // ===============================================
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const heroVisual = document.querySelector('.hero-visual');
+    const heroText = document.querySelector('.hero-text');
+    const bgCircles = document.querySelectorAll('.bg-circle');
     
-    if (heroVisual && scrolled < window.innerHeight) {
-        heroVisual.style.transform = `translateY(${scrolled * 0.3}px)`;
+    if (scrolled < window.innerHeight) {
+        // Parallax for hero visual
+        if (heroVisual) {
+            heroVisual.style.transform = `translateY(${scrolled * 0.4}px)`;
+        }
+        
+        // Parallax for hero text (opposite direction)
+        if (heroText) {
+            heroText.style.transform = `translateY(${scrolled * 0.2}px)`;
+        }
+        
+        // Parallax for background circles
+        bgCircles.forEach((circle, index) => {
+            const speed = 0.15 + (index * 0.1);
+            circle.style.transform = `translate(${scrolled * speed}px, ${scrolled * speed}px)`;
+        });
     }
 });
 
 // ===============================================
-// TYPING EFFECT FOR HERO SUBTITLE
+// SCROLL INDICATOR CLICK
 // ===============================================
-const heroSubtitle = document.querySelector('.hero-subtitle');
-if (heroSubtitle) {
-    const originalText = heroSubtitle.textContent;
-    heroSubtitle.textContent = '';
-    
-    let charIndex = 0;
-    
-    function typeWriter() {
-        if (charIndex < originalText.length) {
-            heroSubtitle.textContent += originalText.charAt(charIndex);
-            charIndex++;
-            setTimeout(typeWriter, 30);
+const scrollIndicator = document.querySelector('.scroll-indicator');
+
+if (scrollIndicator) {
+    scrollIndicator.addEventListener('click', () => {
+        const featuresSection = document.querySelector('.features');
+        if (featuresSection) {
+            featuresSection.scrollIntoView({ behavior: 'smooth' });
         }
+    });
+}
+
+// ===============================================
+// HERO BUTTONS RIPPLE EFFECT
+// ===============================================
+const heroButtons = document.querySelectorAll('.hero-buttons .btn');
+
+heroButtons.forEach(button => {
+    button.addEventListener('click', function(e) {
+        // Create ripple element
+        const ripple = document.createElement('span');
+        ripple.classList.add('ripple-effect');
+        
+        // Get click position
+        const rect = this.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        
+        this.appendChild(ripple);
+        
+        // Remove ripple after animation
+        setTimeout(() => {
+            ripple.remove();
+        }, 600);
+    });
+});
+
+// Add ripple styles
+const rippleStyles = `
+    .ripple-effect {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.6);
+        transform: translate(-50%, -50%);
+        animation: rippleAnimation 0.6s ease-out;
+        pointer-events: none;
     }
     
-    // Start typing after a short delay
+    @keyframes rippleAnimation {
+        from {
+            width: 20px;
+            height: 20px;
+            opacity: 1;
+        }
+        to {
+            width: 200px;
+            height: 200px;
+            opacity: 0;
+        }
+    }
+`;
+
+const rippleStyleSheet = document.createElement('style');
+rippleStyleSheet.textContent = rippleStyles;
+document.head.appendChild(rippleStyleSheet);
+
+// ===============================================
+// DYNAMIC BRAND FLOATERS
+// ===============================================
+const brandFloaters = document.querySelectorAll('.brand-float');
+
+// Make brand floaters interactive
+brandFloaters.forEach(brand => {
+    brand.style.cursor = 'pointer';
+    brand.style.pointerEvents = 'all';
+    brand.style.transition = 'all 0.3s ease';
+    
+    brand.addEventListener('mouseenter', function() {
+        this.style.color = 'rgba(255, 0, 128, 1)';
+        this.style.transform = 'scale(1.5)';
+        this.style.textShadow = '0 0 40px rgba(255, 0, 128, 1)';
+    });
+    
+    brand.addEventListener('mouseleave', function() {
+        this.style.color = 'rgba(255, 0, 128, 0.3)';
+        this.style.transform = 'scale(1)';
+        this.style.textShadow = '0 0 20px rgba(255, 0, 128, 0.5)';
+    });
+    
+    brand.addEventListener('click', function() {
+        showNotification(`🏆 ${this.textContent} - Premium značka dostupná v našich automatoch!`, 'success');
+    });
+});
+
+// ===============================================
+// HERO PRODUCT SHOWCASE INTERACTIONS
+// ===============================================
+const showcaseItems = document.querySelectorAll('.showcase-item');
+
+showcaseItems.forEach((item, index) => {
+    // Add click interaction for product cans
+    item.addEventListener('click', function() {
+        const productName = this.querySelector('.product-name').textContent;
+        showNotification(`🔥 ${productName} - Teraz v našich automatoch!`, 'success');
+        
+        // Add special animation
+        this.style.animation = 'none';
+        setTimeout(() => {
+            this.style.animation = '';
+        }, 10);
+    });
+    
+    // Add stagger animation on load
+    item.style.opacity = '0';
+    item.style.transform = 'scale(0.5)';
     setTimeout(() => {
-        typeWriter();
-    }, 500);
+        item.style.transition = 'all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        item.style.opacity = '1';
+        item.style.transform = 'scale(1)';
+    }, 800 + (index * 200));
+});
+
+// ===============================================
+// BRAND HIGHLIGHTS ANIMATION
+// ===============================================
+const brandHighlights = document.querySelectorAll('.brand-highlight');
+
+brandHighlights.forEach(brand => {
+    brand.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.1)';
+        this.style.textShadow = '0 0 20px rgba(255, 0, 128, 0.8)';
+    });
+    
+    brand.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+        this.style.textShadow = 'none';
+    });
+});
+
+// ===============================================
+// MINI FEATURES HOVER EFFECTS
+// ===============================================
+const miniFeatures = document.querySelectorAll('.mini-feature');
+
+miniFeatures.forEach(feature => {
+    feature.addEventListener('mouseenter', function() {
+        const icon = this.querySelector('.mini-icon');
+        icon.style.transform = 'scale(1.3) rotate(360deg)';
+        icon.style.transition = 'transform 0.5s ease';
+    });
+    
+    feature.addEventListener('mouseleave', function() {
+        const icon = this.querySelector('.mini-icon');
+        icon.style.transform = 'scale(1) rotate(0deg)';
+    });
+});
+
+// ===============================================
+// HERO STATS COUNTER WITH ENHANCED ANIMATION
+// ===============================================
+const heroStats = document.querySelectorAll('.hero-stats .stat-number');
+let statsAnimated = false;
+
+function animateHeroStats() {
+    if (statsAnimated) return;
+    
+    heroStats.forEach(stat => {
+        const text = stat.textContent;
+        const hasPlus = text.includes('+');
+        const hasSlash = text.includes('/');
+        
+        if (hasSlash) {
+            // For 24/7 type stats - no animation needed
+            stat.style.animation = 'statPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+            return;
+        }
+        
+        const number = parseInt(text);
+        if (isNaN(number)) return;
+        
+        let current = 0;
+        const increment = number / 50;
+        const duration = 2000;
+        const stepTime = duration / 50;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= number) {
+                stat.textContent = text;
+                clearInterval(timer);
+                stat.style.animation = 'statPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+            } else {
+                stat.textContent = Math.floor(current) + (hasPlus ? '+' : '');
+            }
+        }, stepTime);
+    });
+    
+    statsAnimated = true;
 }
+
+// Add stat pop animation
+const statPopStyles = `
+    @keyframes statPop {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+    }
+`;
+
+const statStyleSheet = document.createElement('style');
+statStyleSheet.textContent = statPopStyles;
+document.head.appendChild(statStyleSheet);
+
+// Trigger stats animation when hero section is visible
+const heroSection = document.querySelector('.hero');
+if (heroSection) {
+    const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    animateHeroStats();
+                }, 1000);
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    heroObserver.observe(heroSection);
+}
+
+// ===============================================
+// LIPS VISUAL CENTER INTERACTION
+// ===============================================
+const lipsVisualCenter = document.querySelector('.lips-visual-center');
+
+if (lipsVisualCenter) {
+    lipsVisualCenter.addEventListener('click', function() {
+        showNotification('💋 Pod perami. Nad ostatnými! 💋', 'success');
+        
+        // Add pulse effect
+        this.style.animation = 'none';
+        setTimeout(() => {
+            this.style.animation = 'lipsFloat 4s ease-in-out infinite, lipsPulse 0.6s ease-out';
+        }, 10);
+    });
+}
+
+// Add lips pulse animation
+const lipsPulseStyles = `
+    @keyframes lipsPulse {
+        0% { transform: translate(-50%, -50%) scale(1); }
+        50% { transform: translate(-50%, -50%) scale(1.15); }
+        100% { transform: translate(-50%, -50%) scale(1); }
+    }
+`;
+
+const lipsPulseStyleSheet = document.createElement('style');
+lipsPulseStyleSheet.textContent = lipsPulseStyles;
+document.head.appendChild(lipsPulseStyleSheet);
+
+// ===============================================
+// TYPING EFFECT FOR HERO SUBTITLE (REMOVED FOR CLEANER LOOK)
+// ===============================================
+// Removed typing effect to keep hero subtitle immediately visible
 
 // ===============================================
 // LIPS ANIMATION INTERACTION
