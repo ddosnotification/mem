@@ -402,56 +402,237 @@ statsNumbers.forEach(stat => {
 });
 
 // ===============================================
-// PARALLAX EFFECT FOR HERO
+// ENHANCED PARALLAX EFFECT FOR HERO
 // ===============================================
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const heroVisual = document.querySelector('.hero-visual');
+    const glowOrbs = document.querySelectorAll('.glow-orb');
+    const productBoxes = document.querySelectorAll('.showcase-item');
     
-    if (heroVisual && scrolled < window.innerHeight) {
-        heroVisual.style.transform = `translateY(${scrolled * 0.3}px)`;
+    if (scrolled < window.innerHeight) {
+        if (heroVisual) {
+            heroVisual.style.transform = `translateY(${scrolled * 0.3}px)`;
+        }
+        
+        // Parallax for glow orbs
+        glowOrbs.forEach((orb, index) => {
+            const speed = 0.1 + (index * 0.05);
+            orb.style.transform = `translate(0, ${scrolled * speed}px)`;
+        });
+        
+        // Parallax for product boxes
+        productBoxes.forEach((box, index) => {
+            const speed = 0.2 + (index * 0.03);
+            box.style.transform = `translateY(${scrolled * speed}px)`;
+        });
     }
 });
 
 // ===============================================
-// TYPING EFFECT FOR HERO SUBTITLE
+// MOUSE MOVE EFFECT FOR HERO VISUAL
 // ===============================================
-const heroSubtitle = document.querySelector('.hero-subtitle');
-if (heroSubtitle) {
-    const originalText = heroSubtitle.textContent;
-    heroSubtitle.textContent = '';
-    
-    let charIndex = 0;
-    
-    function typeWriter() {
-        if (charIndex < originalText.length) {
-            heroSubtitle.textContent += originalText.charAt(charIndex);
-            charIndex++;
-            setTimeout(typeWriter, 30);
+const heroSection = document.querySelector('.hero');
+const visualShowcase = document.querySelector('.visual-showcase');
+const lipsVisualEnhanced = document.querySelector('.lips-visual-enhanced');
+
+if (heroSection && visualShowcase) {
+    heroSection.addEventListener('mousemove', (e) => {
+        const rect = heroSection.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        
+        // Move visual showcase based on mouse position
+        visualShowcase.style.transform = `translate(${x * 20}px, ${y * 20}px)`;
+        
+        // Move lips in opposite direction for depth
+        if (lipsVisualEnhanced) {
+            lipsVisualEnhanced.style.transform = `translate(calc(-50% + ${x * -15}px), calc(-50% + ${y * -15}px))`;
         }
-    }
+    });
     
-    // Start typing after a short delay
-    setTimeout(() => {
-        typeWriter();
-    }, 500);
+    heroSection.addEventListener('mouseleave', () => {
+        visualShowcase.style.transform = 'translate(0, 0)';
+        if (lipsVisualEnhanced) {
+            lipsVisualEnhanced.style.transform = 'translate(-50%, -50%)';
+        }
+    });
 }
 
 // ===============================================
-// LIPS ANIMATION INTERACTION
+// MINI FEATURES HOVER EFFECT
 // ===============================================
-const lipsVisual = document.querySelector('.lips-visual');
+const miniFeatures = document.querySelectorAll('.mini-feature');
+
+miniFeatures.forEach(feature => {
+    feature.addEventListener('mouseenter', function() {
+        const icon = this.querySelector('i');
+        if (icon) {
+            icon.style.transform = 'scale(1.3) rotate(10deg)';
+            icon.style.transition = 'all 0.3s ease';
+        }
+    });
+    
+    feature.addEventListener('mouseleave', function() {
+        const icon = this.querySelector('i');
+        if (icon) {
+            icon.style.transform = 'scale(1) rotate(0deg)';
+        }
+    });
+});
+
+// ===============================================
+// TYPING EFFECT FOR HERO SUBTITLE (Disabled for better UX)
+// ===============================================
+// Enhanced hero subtitle is now static for better readability
+
+// ===============================================
+// PRODUCT BOX INTERACTIONS
+// ===============================================
+const productBoxes = document.querySelectorAll('.product-box');
+
+productBoxes.forEach(box => {
+    box.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.3) rotate(10deg)';
+        this.style.zIndex = '100';
+    });
+    
+    box.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1) rotate(0deg)';
+        this.style.zIndex = '1';
+    });
+    
+    box.addEventListener('click', function() {
+        const label = this.querySelector('.box-label').textContent;
+        showNotification(`✨ ${label} - Pozri si túto značku v sekciách nižšie!`, 'success');
+        
+        // Add click animation
+        this.style.animation = 'none';
+        setTimeout(() => {
+            this.style.animation = '';
+        }, 10);
+    });
+});
+
+// ===============================================
+// BRAND TAG INTERACTIONS
+// ===============================================
+const brandTags = document.querySelectorAll('.brand-tag');
+
+brandTags.forEach(tag => {
+    tag.addEventListener('click', function() {
+        const brandName = this.textContent;
+        showNotification(`🔥 ${brandName} je dostupná v našich automatoch!`, 'success');
+        
+        // Scroll to products section
+        setTimeout(() => {
+            const productsSection = document.getElementById('products');
+            if (productsSection) {
+                productsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }, 1000);
+    });
+});
+
+// ===============================================
+// FLOATING FLAVOR BUBBLES INTERACTION
+// ===============================================
+const flavorBubbles = document.querySelectorAll('.flavor-bubble');
+
+flavorBubbles.forEach((bubble, index) => {
+    bubble.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.2) translateY(-10px)';
+        this.style.boxShadow = '0 15px 40px rgba(255, 0, 128, 0.6)';
+    });
+    
+    bubble.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1) translateY(0)';
+        this.style.boxShadow = '0 10px 30px rgba(255, 0, 128, 0.4)';
+    });
+});
+
+// ===============================================
+// HERO STATS COUNTER WITH ENHANCED ANIMATION
+// ===============================================
+const enhancedStatsNumbers = document.querySelectorAll('.stat-number');
+
+function animateEnhancedCounter(element) {
+    const target = element.textContent;
+    const hasPlus = target.includes('+');
+    const number = parseInt(target.replace('+', ''));
+    
+    if (isNaN(number)) {
+        // For non-numeric values like "24/7"
+        return;
+    }
+    
+    const duration = 2500;
+    const steps = 80;
+    const increment = number / steps;
+    let current = 0;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= number) {
+            element.textContent = number + (hasPlus ? '+' : '');
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current) + (hasPlus ? '+' : '');
+        }
+    }, duration / steps);
+}
+
+// Re-observe stats with enhanced animation
+const enhancedStatsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+            animateEnhancedCounter(entry.target);
+            entry.target.classList.add('counted');
+            
+            // Add pulsing effect
+            entry.target.style.animation = 'statPulse 0.6s ease';
+        }
+    });
+}, { threshold: 0.5 });
+
+enhancedStatsNumbers.forEach(stat => {
+    enhancedStatsObserver.observe(stat);
+});
+
+// Add stat pulse animation
+const statPulseStyle = `
+    @keyframes statPulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.15); }
+    }
+`;
+const statPulseSheet = document.createElement('style');
+statPulseSheet.textContent = statPulseStyle;
+document.head.appendChild(statPulseSheet);
+
+// ===============================================
+// LIPS ANIMATION INTERACTION - ENHANCED
+// ===============================================
+const lipsVisual = document.querySelector('.lips-visual-enhanced');
 const animatedLips = document.querySelector('.animated-lips');
 
 if (lipsVisual) {
     lipsVisual.addEventListener('mouseenter', function() {
-        this.style.transform = 'scale(1.1) rotate(5deg)';
-        this.style.filter = 'drop-shadow(0 0 50px rgba(255, 0, 128, 0.8))';
+        this.style.filter = 'drop-shadow(0 0 70px rgba(255, 0, 128, 1))';
+        this.style.transform = 'translate(-50%, -50%) scale(1.15)';
     });
     
     lipsVisual.addEventListener('mouseleave', function() {
-        this.style.transform = 'scale(1) rotate(0deg)';
-        this.style.filter = 'drop-shadow(0 0 30px rgba(255, 0, 128, 0.5))';
+        this.style.filter = 'drop-shadow(0 0 50px rgba(255, 0, 128, 0.7))';
+        this.style.transform = 'translate(-50%, -50%) scale(1)';
+    });
+    
+    lipsVisual.addEventListener('click', function() {
+        showNotification('💋 Pod perami. Nad ostatnými!', 'success');
+        this.style.animation = 'none';
+        setTimeout(() => {
+            this.style.animation = 'float 4s ease-in-out infinite';
+        }, 10);
     });
 }
 
@@ -461,6 +642,50 @@ if (animatedLips) {
         setTimeout(() => {
             this.style.animation = 'pulse 2s ease-in-out infinite';
         }, 10);
+    });
+}
+
+// ===============================================
+// HERO BADGE CLICK INTERACTION
+// ===============================================
+const heroBadge = document.querySelector('.hero-badge');
+
+if (heroBadge) {
+    heroBadge.addEventListener('click', function() {
+        showNotification('🎉 Nové príchute práve dorazili! Pozri si top picks nižšie!', 'success');
+        
+        // Add special animation
+        this.style.animation = 'none';
+        setTimeout(() => {
+            this.style.animation = 'badgePulse 3s ease-in-out infinite';
+        }, 10);
+        
+        // Scroll to products
+        setTimeout(() => {
+            const productsSection = document.getElementById('products');
+            if (productsSection) {
+                productsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }, 1500);
+    });
+    
+    heroBadge.style.cursor = 'pointer';
+}
+
+// ===============================================
+// SHOWCASE CIRCLE INTERACTION
+// ===============================================
+const showcaseCircle = document.querySelector('.showcase-circle');
+
+if (showcaseCircle) {
+    showcaseCircle.addEventListener('mouseenter', function() {
+        this.style.animationPlayState = 'paused';
+        this.style.borderColor = 'rgba(255, 0, 128, 0.5)';
+    });
+    
+    showcaseCircle.addEventListener('mouseleave', function() {
+        this.style.animationPlayState = 'running';
+        this.style.borderColor = 'rgba(255, 0, 128, 0.2)';
     });
 }
 
@@ -560,7 +785,7 @@ if (footerYearElements.length > 0) {
 }
 
 // ===============================================
-// LOADING ANIMATION
+// LOADING ANIMATION - ENHANCED
 // ===============================================
 window.addEventListener('load', () => {
     document.body.style.opacity = '0';
@@ -568,6 +793,47 @@ window.addEventListener('load', () => {
         document.body.style.transition = 'opacity 0.5s ease';
         document.body.style.opacity = '1';
     }, 100);
+    
+    // Animate hero visual elements on load
+    setTimeout(() => {
+        const showcaseItems = document.querySelectorAll('.showcase-item');
+        showcaseItems.forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'scale(0)';
+            
+            setTimeout(() => {
+                item.style.transition = 'all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                item.style.opacity = '1';
+                item.style.transform = 'scale(1)';
+            }, 500 + (index * 150));
+        });
+        
+        // Animate lips
+        const lipsVisual = document.querySelector('.lips-visual-enhanced');
+        if (lipsVisual) {
+            lipsVisual.style.opacity = '0';
+            lipsVisual.style.transform = 'translate(-50%, -50%) scale(0)';
+            
+            setTimeout(() => {
+                lipsVisual.style.transition = 'all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                lipsVisual.style.opacity = '1';
+                lipsVisual.style.transform = 'translate(-50%, -50%) scale(1)';
+            }, 1200);
+        }
+        
+        // Animate flavor bubbles
+        const flavorBubbles = document.querySelectorAll('.flavor-bubble');
+        flavorBubbles.forEach((bubble, index) => {
+            bubble.style.opacity = '0';
+            bubble.style.transform = 'scale(0)';
+            
+            setTimeout(() => {
+                bubble.style.transition = 'all 0.5s ease';
+                bubble.style.opacity = '0.7';
+                bubble.style.transform = 'scale(1)';
+            }, 1500 + (index * 100));
+        });
+    }, 600);
 });
 
 // ===============================================
@@ -590,10 +856,25 @@ const imageObserver = new IntersectionObserver((entries) => {
 lazyImages.forEach(img => imageObserver.observe(img));
 
 // ===============================================
+// SCROLL INDICATOR CLICK
+// ===============================================
+const scrollIndicator = document.querySelector('.scroll-indicator');
+
+if (scrollIndicator) {
+    scrollIndicator.addEventListener('click', () => {
+        const featuresSection = document.querySelector('.features');
+        if (featuresSection) {
+            featuresSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+}
+
+// ===============================================
 // CONSOLE MESSAGE
 // ===============================================
 console.log('%c🔥 PODPEROS 🔥', 'font-size: 30px; font-weight: bold; color: #ff0080; text-shadow: 2px 2px 4px rgba(255,0,128,0.3);');
 console.log('%cPod perami. Nad ostatnými.', 'font-size: 16px; color: #ff6b9d; font-style: italic;');
+console.log('%c✨ Nové príchute. Top značky. Premium kvalita.', 'font-size: 14px; color: #8b5cf6; font-weight: bold;');
 console.log('%c⚠️ Nikotín je návyková látka. Len pre 18+', 'font-size: 12px; color: #ff0080; background: #1a1a24; padding: 10px; border-radius: 5px; margin-top: 10px;');
 
 // ===============================================
@@ -672,4 +953,50 @@ const revealStyleSheet = document.createElement('style');
 revealStyleSheet.textContent = revealStyles;
 document.head.appendChild(revealStyleSheet);
 
+// ===============================================
+// HERO ELEMENTS REVEAL ON SCROLL
+// ===============================================
+const heroElements = document.querySelectorAll('.hero-badge, .mini-feature, .brand-tag');
+
+const heroRevealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting && !entry.target.classList.contains('hero-revealed')) {
+            setTimeout(() => {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('hero-revealed');
+            }, index * 50);
+        }
+    });
+}, { threshold: 0.1 });
+
+heroElements.forEach(el => {
+    if (!el.classList.contains('hero-revealed')) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        heroRevealObserver.observe(el);
+    }
+});
+
+// ===============================================
+// ADD 3D TILT EFFECT TO STAT ITEMS
+// ===============================================
+const statItems = document.querySelectorAll('.stat-item');
+
+statItems.forEach(item => {
+    item.addEventListener('mousemove', (e) => {
+        const rect = item.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        
+        item.style.transform = `perspective(1000px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) translateY(-5px)`;
+    });
+    
+    item.addEventListener('mouseleave', () => {
+        item.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0)';
+    });
+});
+
 console.log('🚀 Podperos website fully loaded and interactive!');
+console.log('💎 Enhanced hero section with premium visuals loaded!');
