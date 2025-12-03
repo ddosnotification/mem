@@ -66,70 +66,145 @@
     <section class="hero" id="home">
         <div class="hero-particles" id="particles-js"></div>
         <div class="hero-gradient"></div>
+        <div class="hero-glow-orbs">
+            <div class="glow-orb orb-1"></div>
+            <div class="glow-orb orb-2"></div>
+            <div class="glow-orb orb-3"></div>
+        </div>
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text" data-aos="fade-up">
+                    <div class="hero-badge-container">
+                        <span class="hero-badge new-badge">
+                            <i class="fas fa-fire"></i> NOVÉ PRÍCHUTE 2024
+                        </span>
+                        <span class="hero-badge trending-badge">
+                            <i class="fas fa-star"></i> TOP ZNAČKY
+                        </span>
+                    </div>
                     <h1 class="hero-title">
-                        <span class="title-line">POD PERAMI.</span>
-                        <span class="title-line">NAD OSTATNÝMI.</span>
+                        <span class="title-line">NAJLEPŠIE ZNAČKY.</span>
+                        <span class="title-line">NAJNOVŠIE PRÍCHUTE.</span>
+                        <span class="title-line-small">POD PERAMI. NAD OSTATNÝMI.</span>
                     </h1>
-                    <p class="hero-subtitle">Nová generácia nikotínových vrecúšok. Priamo z automatu. Kedykoľvek. Kdekoľvek.</p>
+                    <p class="hero-subtitle">
+                        <span class="highlight-text">Exkluzívny výber top značiek</span> - VELO, ZYN, PABLO, SIBERIA & viac. 
+                        Objavuj nové limitované edície, sezónne špeciality a najžiadanejšie príchute priamo z automatu. 
+                        <strong>Vždy čerstvé, vždy dostupné.</strong>
+                    </p>
+                    <div class="hero-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-sparkles"></i>
+                            <span>Nové príchute každý týždeň</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-award"></i>
+                            <span>Prémiové značky</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-bolt"></i>
+                            <span>Limitované edície</span>
+                        </div>
+                    </div>
                     <div class="hero-buttons">
-                        <a href="#locations" class="btn btn-primary">
+                        <a href="#products" class="btn btn-primary btn-glow">
+                            <span>Pozri Top Picks</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#locations" class="btn btn-secondary">
                             <span>Nájdi Automat</span>
                             <i class="fas fa-map-marker-alt"></i>
                         </a>
-                        <a href="#products" class="btn btn-secondary">
-                            <span>Naše Produkty</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
                     </div>
-                    <div class="hero-stats">
-                        <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-label">Dostupnosť</div>
-                        </div>
-                        <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
-                            <div class="stat-number">50+</div>
-                            <div class="stat-label">Príchutí</div>
-                        </div>
-                        <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
-                            <div class="stat-number">10+</div>
-                            <div class="stat-label">Lokalít</div>
+                    <div class="hero-brands">
+                        <span class="brands-label">Najlepšie značky:</span>
+                        <div class="brands-scroll">
+                            <span class="brand-tag">VELO</span>
+                            <span class="brand-tag">ZYN</span>
+                            <span class="brand-tag">PABLO</span>
+                            <span class="brand-tag">SIBERIA</span>
+                            <span class="brand-tag">LYFT</span>
+                            <span class="brand-tag">VOLT</span>
                         </div>
                     </div>
                 </div>
                 <div class="hero-visual" data-aos="fade-left" data-aos-delay="200">
-                    <div class="floating-element element-1">
-                        <div class="pouch-visual">
-                            <div class="pouch"></div>
+                    <div class="visual-showcase">
+                        <div class="showcase-circle">
+                            <div class="rotating-ring ring-1"></div>
+                            <div class="rotating-ring ring-2"></div>
+                            <div class="rotating-ring ring-3"></div>
+                        </div>
+                        <div class="lips-visual-enhanced">
+                            <svg viewBox="0 0 200 120" class="lips-svg">
+                                <defs>
+                                    <linearGradient id="lipGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#ff0080;stop-opacity:1" />
+                                        <stop offset="50%" style="stop-color:#ff1a8c;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#ff6b9d;stop-opacity:1" />
+                                    </linearGradient>
+                                    <filter id="lipGlow">
+                                        <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                                        <feMerge>
+                                            <feMergeNode in="coloredBlur"/>
+                                            <feMergeNode in="SourceGraphic"/>
+                                        </feMerge>
+                                    </filter>
+                                </defs>
+                                <!-- Upper Lip -->
+                                <path d="M 30,60 Q 50,35 100,35 Q 150,35 170,60" fill="url(#lipGradient)" stroke="#d4006d" stroke-width="3" filter="url(#lipGlow)"/>
+                                <!-- Lower Lip -->
+                                <path d="M 30,60 Q 50,90 100,90 Q 150,90 170,60" fill="url(#lipGradient)" stroke="#d4006d" stroke-width="3" filter="url(#lipGlow)"/>
+                                <!-- Highlight -->
+                                <ellipse cx="100" cy="48" rx="35" ry="6" fill="rgba(255,255,255,0.5)"/>
+                                <ellipse cx="100" cy="80" rx="30" ry="4" fill="rgba(0,0,0,0.1)"/>
+                            </svg>
+                        </div>
+                        <div class="floating-products">
+                            <div class="product-orbit orbit-1">
+                                <div class="mini-product product-new">
+                                    <i class="fas fa-box"></i>
+                                    <span class="product-label">NEW</span>
+                                </div>
+                            </div>
+                            <div class="product-orbit orbit-2">
+                                <div class="mini-product product-hot">
+                                    <i class="fas fa-fire"></i>
+                                    <span class="product-label">HOT</span>
+                                </div>
+                            </div>
+                            <div class="product-orbit orbit-3">
+                                <div class="mini-product product-top">
+                                    <i class="fas fa-star"></i>
+                                    <span class="product-label">TOP</span>
+                                </div>
+                            </div>
+                            <div class="product-orbit orbit-4">
+                                <div class="mini-product product-limited">
+                                    <i class="fas fa-crown"></i>
+                                    <span class="product-label">LIMITED</span>
+                                </div>
+                            </div>
+                            <div class="product-orbit orbit-5">
+                                <div class="mini-product product-fresh">
+                                    <i class="fas fa-leaf"></i>
+                                    <span class="product-label">FRESH</span>
+                                </div>
+                            </div>
+                            <div class="product-orbit orbit-6">
+                                <div class="mini-product product-ice">
+                                    <i class="fas fa-snowflake"></i>
+                                    <span class="product-label">ICE</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="floating-element element-2">
-                        <div class="pouch-visual">
-                            <div class="pouch"></div>
-                        </div>
-                    </div>
-                    <div class="floating-element element-3">
-                        <div class="pouch-visual">
-                            <div class="pouch"></div>
-                        </div>
-                    </div>
-                    <div class="lips-visual">
-                        <svg viewBox="0 0 200 120" class="lips-svg">
-                            <defs>
-                                <linearGradient id="lipGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#ff0080;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#ff6b9d;stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            <!-- Upper Lip -->
-                            <path d="M 30,60 Q 50,40 100,40 Q 150,40 170,60" fill="url(#lipGradient)" stroke="#d4006d" stroke-width="2"/>
-                            <!-- Lower Lip -->
-                            <path d="M 30,60 Q 50,85 100,85 Q 150,85 170,60" fill="url(#lipGradient)" stroke="#d4006d" stroke-width="2"/>
-                            <!-- Highlight -->
-                            <ellipse cx="100" cy="50" rx="30" ry="5" fill="rgba(255,255,255,0.3)"/>
-                        </svg>
+                    <div class="flavor-carousel">
+                        <div class="flavor-tag-animated">🍓 Berry Blast</div>
+                        <div class="flavor-tag-animated">❄️ Arctic Freeze</div>
+                        <div class="flavor-tag-animated">🍋 Citrus Punch</div>
+                        <div class="flavor-tag-animated">🍑 Peach Passion</div>
+                        <div class="flavor-tag-animated">☕ Coffee Rush</div>
                     </div>
                 </div>
             </div>

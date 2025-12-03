@@ -414,44 +414,34 @@ window.addEventListener('scroll', () => {
 });
 
 // ===============================================
-// TYPING EFFECT FOR HERO SUBTITLE
+// FADE IN EFFECT FOR HERO SUBTITLE
 // ===============================================
 const heroSubtitle = document.querySelector('.hero-subtitle');
 if (heroSubtitle) {
-    const originalText = heroSubtitle.textContent;
-    heroSubtitle.textContent = '';
+    // Add fade-in animation instead of typing effect for better readability
+    heroSubtitle.style.opacity = '0';
+    heroSubtitle.style.transition = 'opacity 1s ease-in-out';
     
-    let charIndex = 0;
-    
-    function typeWriter() {
-        if (charIndex < originalText.length) {
-            heroSubtitle.textContent += originalText.charAt(charIndex);
-            charIndex++;
-            setTimeout(typeWriter, 30);
-        }
-    }
-    
-    // Start typing after a short delay
     setTimeout(() => {
-        typeWriter();
-    }, 500);
+        heroSubtitle.style.opacity = '1';
+    }, 300);
 }
 
 // ===============================================
 // LIPS ANIMATION INTERACTION
 // ===============================================
-const lipsVisual = document.querySelector('.lips-visual');
+const lipsVisual = document.querySelector('.lips-visual-enhanced');
 const animatedLips = document.querySelector('.animated-lips');
 
 if (lipsVisual) {
     lipsVisual.addEventListener('mouseenter', function() {
-        this.style.transform = 'scale(1.1) rotate(5deg)';
-        this.style.filter = 'drop-shadow(0 0 50px rgba(255, 0, 128, 0.8))';
+        this.style.transform = 'scale(1.15) rotate(5deg)';
+        this.style.filter = 'drop-shadow(0 0 60px rgba(255, 0, 128, 0.9))';
     });
     
     lipsVisual.addEventListener('mouseleave', function() {
         this.style.transform = 'scale(1) rotate(0deg)';
-        this.style.filter = 'drop-shadow(0 0 30px rgba(255, 0, 128, 0.5))';
+        this.style.filter = 'drop-shadow(0 0 40px rgba(255, 0, 128, 0.7))';
     });
 }
 
@@ -461,6 +451,126 @@ if (animatedLips) {
         setTimeout(() => {
             this.style.animation = 'pulse 2s ease-in-out infinite';
         }, 10);
+    });
+}
+
+// ===============================================
+// FLOATING PRODUCTS INTERACTION
+// ===============================================
+const miniProducts = document.querySelectorAll('.mini-product');
+
+miniProducts.forEach((product, index) => {
+    product.addEventListener('click', function() {
+        const label = this.querySelector('.product-label').textContent;
+        showNotification(`🎉 ${label} kategória - Pozri si naše top produkty!`, 'success');
+        
+        // Add pulse animation
+        this.style.animation = 'pulse 0.5s ease-in-out';
+        setTimeout(() => {
+            this.style.animation = '';
+        }, 500);
+    });
+    
+    product.addEventListener('mouseenter', function() {
+        // Pause orbit rotation on hover
+        const orbit = this.parentElement;
+        orbit.style.animationPlayState = 'paused';
+    });
+    
+    product.addEventListener('mouseleave', function() {
+        // Resume orbit rotation
+        const orbit = this.parentElement;
+        orbit.style.animationPlayState = 'running';
+    });
+});
+
+// ===============================================
+// BRAND TAGS INTERACTION
+// ===============================================
+const brandTags = document.querySelectorAll('.brand-tag');
+
+brandTags.forEach(tag => {
+    tag.addEventListener('click', function() {
+        const brandName = this.textContent;
+        showNotification(`${brandName} - Prémiová kvalita v našich automatoch!`, 'success');
+        
+        // Add bounce effect
+        this.style.animation = 'bounce 0.6s ease';
+        setTimeout(() => {
+            this.style.animation = '';
+        }, 600);
+    });
+});
+
+// Add bounce animation
+const bounceAnimation = `
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0) scale(1); }
+        25% { transform: translateY(-10px) scale(1.1); }
+        50% { transform: translateY(-5px) scale(1.05); }
+        75% { transform: translateY(-8px) scale(1.08); }
+    }
+`;
+
+const bounceStyle = document.createElement('style');
+bounceStyle.textContent = bounceAnimation;
+document.head.appendChild(bounceStyle);
+
+// ===============================================
+// FLAVOR CAROUSEL INTERACTION
+// ===============================================
+const flavorTags = document.querySelectorAll('.flavor-tag-animated');
+
+flavorTags.forEach(tag => {
+    tag.addEventListener('click', function() {
+        const flavorName = this.textContent;
+        showNotification(`${flavorName} - Skvelá voľba! 😋`, 'success');
+        
+        // Add glow effect
+        this.style.boxShadow = '0 10px 40px rgba(255, 0, 128, 0.8)';
+        this.style.transform = 'scale(1.15)';
+        
+        setTimeout(() => {
+            this.style.boxShadow = '0 5px 20px rgba(255, 0, 128, 0.3)';
+            this.style.transform = 'scale(1)';
+        }, 300);
+    });
+});
+
+// ===============================================
+// HERO BADGES ANIMATION
+// ===============================================
+const heroBadges = document.querySelectorAll('.hero-badge');
+
+heroBadges.forEach(badge => {
+    badge.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.1) rotate(-2deg)';
+    });
+    
+    badge.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1) rotate(0deg)';
+    });
+});
+
+// ===============================================
+// ROTATING RINGS SPEED CONTROL
+// ===============================================
+const showcaseCircle = document.querySelector('.showcase-circle');
+
+if (showcaseCircle) {
+    showcaseCircle.addEventListener('mouseenter', function() {
+        const rings = this.querySelectorAll('.rotating-ring');
+        rings.forEach(ring => {
+            const currentAnimation = window.getComputedStyle(ring).animation;
+            ring.style.animationDuration = '5s'; // Speed up on hover
+        });
+    });
+    
+    showcaseCircle.addEventListener('mouseleave', function() {
+        const rings = this.querySelectorAll('.rotating-ring');
+        rings[0].style.animationDuration = '20s';
+        rings[1].style.animationDuration = '15s';
+        rings[2].style.animationDuration = '25s';
     });
 }
 
@@ -672,4 +782,162 @@ const revealStyleSheet = document.createElement('style');
 revealStyleSheet.textContent = revealStyles;
 document.head.appendChild(revealStyleSheet);
 
+// ===============================================
+// DYNAMIC GLOW ORBS MOVEMENT
+// ===============================================
+const glowOrbs = document.querySelectorAll('.glow-orb');
+
+document.addEventListener('mousemove', (e) => {
+    const mouseX = e.clientX / window.innerWidth;
+    const mouseY = e.clientY / window.innerHeight;
+    
+    glowOrbs.forEach((orb, index) => {
+        const speed = (index + 1) * 20;
+        const xOffset = (mouseX - 0.5) * speed;
+        const yOffset = (mouseY - 0.5) * speed;
+        
+        orb.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+    });
+});
+
+// ===============================================
+// HERO SECTION PARALLAX ENHANCEMENT
+// ===============================================
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const hero = document.querySelector('.hero');
+    
+    if (hero && scrolled < window.innerHeight) {
+        const visualShowcase = document.querySelector('.visual-showcase');
+        const heroBrands = document.querySelector('.hero-brands');
+        const flavorCarousel = document.querySelector('.flavor-carousel');
+        
+        if (visualShowcase) {
+            visualShowcase.style.transform = `translateY(${scrolled * 0.2}px) scale(${1 - scrolled * 0.0002})`;
+        }
+        
+        if (heroBrands) {
+            heroBrands.style.transform = `translateY(${scrolled * 0.1}px)`;
+            heroBrands.style.opacity = 1 - (scrolled * 0.002);
+        }
+        
+        if (flavorCarousel) {
+            flavorCarousel.style.transform = `translateX(-50%) translateY(${scrolled * 0.15}px)`;
+        }
+    }
+});
+
+// ===============================================
+// HIGHLIGHT ITEMS SEQUENTIAL ANIMATION
+// ===============================================
+const highlightItems = document.querySelectorAll('.highlight-item');
+
+const highlightObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateX(0)';
+            }, index * 150);
+        }
+    });
+}, { threshold: 0.5 });
+
+highlightItems.forEach(item => {
+    item.style.opacity = '0';
+    item.style.transform = 'translateX(-30px)';
+    item.style.transition = 'all 0.6s ease';
+    highlightObserver.observe(item);
+});
+
+// ===============================================
+// MINI PRODUCTS SEQUENTIAL APPEARANCE
+// ===============================================
+const productOrbits = document.querySelectorAll('.product-orbit');
+
+const orbitObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'scale(1)';
+            }, index * 100);
+        }
+    });
+}, { threshold: 0.1 });
+
+productOrbits.forEach(orbit => {
+    orbit.style.opacity = '0';
+    orbit.style.transform = 'scale(0)';
+    orbit.style.transition = 'all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+    orbitObserver.observe(orbit);
+});
+
+// ===============================================
+// BRAND TAGS HOVER SOUND EFFECT (VISUAL)
+// ===============================================
+const brandsScroll = document.querySelector('.brands-scroll');
+
+if (brandsScroll) {
+    let isScrolling = false;
+    
+    brandsScroll.addEventListener('mouseenter', () => {
+        isScrolling = true;
+        brandsScroll.style.animation = 'none';
+    });
+    
+    brandsScroll.addEventListener('mouseleave', () => {
+        isScrolling = false;
+        brandsScroll.style.animation = 'scrollBrands 20s linear infinite';
+    });
+    
+    // Touch support for mobile
+    brandsScroll.addEventListener('touchstart', () => {
+        brandsScroll.style.animation = 'none';
+    });
+}
+
+// ===============================================
+// ROTATING RINGS GLOW EFFECT
+// ===============================================
+const rotatingRings = document.querySelectorAll('.rotating-ring');
+
+setInterval(() => {
+    rotatingRings.forEach((ring, index) => {
+        const colors = [
+            'rgba(255, 0, 128, 0.4)',
+            'rgba(139, 92, 246, 0.4)',
+            'rgba(255, 107, 157, 0.4)'
+        ];
+        
+        ring.style.borderColor = colors[index];
+        ring.style.boxShadow = `0 0 30px ${colors[index]}`;
+        
+        setTimeout(() => {
+            ring.style.borderColor = colors[index].replace('0.4', '0.2');
+            ring.style.boxShadow = 'none';
+        }, 500);
+    });
+}, 3000);
+
+// ===============================================
+// HERO BADGES FLOATING ANIMATION
+// ===============================================
+const heroBadgeContainer = document.querySelector('.hero-badge-container');
+
+if (heroBadgeContainer) {
+    const badges = heroBadgeContainer.querySelectorAll('.hero-badge');
+    
+    badges.forEach((badge, index) => {
+        setInterval(() => {
+            badge.style.transform = `translateY(-5px) scale(1.05) rotate(${index % 2 === 0 ? '-2deg' : '2deg'})`;
+            
+            setTimeout(() => {
+                badge.style.transform = 'translateY(0) scale(1) rotate(0deg)';
+            }, 800);
+        }, 3000 + (index * 500));
+    });
+}
+
 console.log('🚀 Podperos website fully loaded and interactive!');
+console.log('✨ Enhanced hero section with premium visuals and top brand showcase!');
