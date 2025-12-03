@@ -1,0 +1,28 @@
+<svg width="200" height="80" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff0080;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff6b9d;stop-opacity:1" />
+    </linearGradient>
+    <filter id="logoGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Lips Icon -->
+  <g transform="translate(10, 25)">
+    <path d="M 5,15 Q 12,8 20,8 Q 28,8 35,15" fill="url(#logoGradient)" stroke="#ff0080" stroke-width="2"/>
+    <path d="M 5,15 Q 12,23 20,23 Q 28,23 35,15" fill="url(#logoGradient)" stroke="#ff0080" stroke-width="2"/>
+    <ellipse cx="20" cy="13" rx="8" ry="2" fill="rgba(255,255,255,0.3)"/>
+  </g>
+  
+  <!-- PODPEROS Text -->
+  <text x="55" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="url(#logoGradient)" filter="url(#logoGlow)">PODPEROS</text>
+  
+  <!-- Subtitle -->
+  <text x="55" y="55" font-family="Arial, sans-serif" font-size="9" fill="#ff6b9d" letter-spacing="1">Pod perami. Nad ostatnými.</text>
+</svg>

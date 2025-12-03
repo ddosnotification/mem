@@ -195,6 +195,22 @@ body {
     flex-direction: column;
 }
 
+.logo-image {
+    height: 60px;
+    width: auto;
+    transition: var(--transition-smooth);
+    filter: drop-shadow(0 0 10px rgba(255, 0, 128, 0.3));
+}
+
+.logo-image:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 20px rgba(255, 0, 128, 0.6));
+}
+
+.navbar.scrolled .logo-image {
+    height: 50px;
+}
+
 .logo-text {
     font-family: var(--font-display);
     font-size: 32px;
@@ -767,17 +783,44 @@ body {
     75% { transform: translate(-15px, -15px) rotate(-5deg); }
 }
 
+.product-can-wrapper {
+    position: relative;
+    width: 100px;
+    height: 140px;
+    perspective: 1000px;
+}
+
+.product-can-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.4));
+    animation: canFloat 6s ease-in-out infinite, canRotate 10s linear infinite;
+    transition: var(--transition-smooth);
+}
+
+.showcase-item:hover .product-can-image {
+    filter: drop-shadow(0 20px 50px rgba(255, 0, 128, 0.6));
+    transform: scale(1.1) translateY(-10px);
+}
+
+@keyframes canFloat {
+    0%, 100% { transform: translateY(0) rotateY(0deg); }
+    50% { transform: translateY(-15px) rotateY(180deg); }
+}
+
+@keyframes canRotate {
+    0%, 100% { transform: rotateY(0deg); }
+    50% { transform: rotateY(360deg); }
+}
+
+/* Legacy support for old can-body structure */
 .product-can {
     position: relative;
     width: 100px;
     height: 140px;
     perspective: 1000px;
     animation: canRotate 10s linear infinite;
-}
-
-@keyframes canRotate {
-    0%, 100% { transform: rotateY(0deg); }
-    50% { transform: rotateY(360deg); }
 }
 
 .can-body {
@@ -1236,6 +1279,29 @@ body {
     height: 200px;
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(255, 0, 128, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+}
+
+.product-image-file {
+    width: 60%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+    transition: var(--transition-smooth);
+    animation: productFloat 4s ease-in-out infinite;
+}
+
+@keyframes productFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.product-card:hover .product-image-file {
+    transform: scale(1.15) translateY(-10px) rotate(5deg);
+    filter: drop-shadow(0 20px 50px rgba(255, 0, 128, 0.5));
 }
 
 .product-visual {
@@ -1966,9 +2032,15 @@ body {
         transform: scale(0.7);
     }
     
-    .product-can {
+    .product-can,
+    .product-can-wrapper {
         width: 80px;
         height: 110px;
+    }
+    
+    .product-can-image {
+        width: 100%;
+        height: 100%;
     }
     
     .can-brand {
@@ -2023,6 +2095,14 @@ body {
     .circle-3 {
         width: 250px;
         height: 250px;
+    }
+    
+    .logo-image {
+        height: 45px;
+    }
+    
+    .product-image-file {
+        width: 70%;
     }
 }
 
