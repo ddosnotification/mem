@@ -1,291 +1,224 @@
-# 🔥 PODPEROS - Moderná Webová Stránka pre Nikotínové Automaty
+# 🔥 PODPEROS - Modern Snus Vending Website
 
-![Podperos Logo](https://img.shields.io/badge/PODPEROS-Pod%20perami.%20Nad%20ostatn%C3%BDmi.-ff0080?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDIwMCAxMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTSAzMCw2MCBRIDUwLDQwIDEwMCw0MCBRIDE1MCw0MCAxNzAsNjAiIGZpbGw9IiNmZjAwODAiLz48cGF0aCBkPSJNIDMwLDYwIFEgNTAsODUgMTAwLDg1IFEgMTUwLDg1IDE3MCw2MCIgZmlsbD0iI2ZmMDA4MCIvPjwvc3ZnPg==)
+**Pod perami. Nad ostatnými.** 💋
 
-Stránka pre spoločnosť **Podperos** - poskytovateľa moderných nikotínových vrecúšok (snus) a vapes z automatov. Dizajn je moderný, zábavný a postavený na červeno-ružovej farebnej schéme s vizuálmi pier a nikotínových vrecúšok.
+A stunning, modern website for Slovakia's first nicotine pouch vending machine company. Built with pure HTML, CSS, and JavaScript with a focus on animations, responsive design, and user experience.
 
-## 🎨 Vlastnosti Dizajnu
+## 🎨 Design Features
 
 ### Branding
-- **Názov**: "Podperos" (Pod perami)
-- **Slogan**: "Pod perami. Nad ostatnými."
-- **Farebná schéma**: Červeno-ružová s fialovými akcentmi
-- **Vizuálne prvky**: Pery, nikotínové vrecúška, moderné geometrické tvary
+- **Primary Colors**: Red (#ff0080) and Pink (#ff6b9d) gradient theme
+- **Typography**: Bebas Neue for headings, Poppins for body text
+- **Visual Theme**: Lips and nicotine pouches representing "podperos" (under lips)
+- **Modern & Trendy**: Smooth animations, particle effects, glowing elements
 
-### Dizajnové Prvky
-- ✨ **Úžasná hero sekcia** s animovanými perami a floating vrecúškami
-- 🎭 **Particles.js efekty** pre dynamické pozadie
-- 🌊 **Smooth scroll animácie** pomocou AOS library
-- 💫 **Hover efekty** na všetkých interaktívnych prvkoch
-- 📱 **Plne responzívny dizajn** pre mobily aj PC
-- 🎨 **Gradientové pozadia** a tieňové efekty
-- ⚡ **Rýchle animácie** s cubic-bezier easing
-- 🖱️ **Cursor trail efekt** pre lepší UX
+### Key Sections
+1. **Hero Section** - Bold typography with animated product showcase
+2. **Features** - 4 key benefits with hover effects
+3. **Products** - 4 product categories (Strong, Medium, Light, Vapes)
+4. **How To** - 3-step process explanation with visual aids
+5. **Locations** - Interactive location list with map placeholder
+6. **Contact** - Contact form and methods
 
-## 📁 Štruktúra Projektu
+## 🚀 Features
+
+### Interactive Elements
+- ✨ Particle.js background effects
+- 🎭 AOS (Animate On Scroll) animations
+- 💫 Custom hover effects and micro-interactions
+- 📱 Fully responsive (mobile, tablet, desktop)
+- 🎯 Age verification modal (18+)
+- 🔥 Smooth scroll navigation
+- 💋 Interactive lips visual
+- 🎨 Gradient text effects
+- ⚡ Ripple button effects
+- 🌈 Easter egg (Konami code)
+
+### Libraries Used
+- **Particles.js** - Animated background particles
+- **AOS** - Scroll animations
+- **Font Awesome** - Icons
+- **Google Fonts** - Bebas Neue & Poppins
+
+## 📁 Project Structure
 
 ```
-podperos/
-├── index.html          # Hlavná HTML štruktúra
-├── styles.css          # Všetky CSS štýly a animácie
-├── script.js           # JavaScript logika a interaktivita
-└── README.md           # Táto dokumentácia
+/workspace/
+├── index.html          # Main HTML file
+├── styles.css          # All styling and animations
+├── script.js           # Interactive JavaScript
+├── images/
+│   ├── logo.svg        # SVG logo
+│   └── README.md       # Images documentation
+└── README.md           # This file
 ```
 
-## 🚀 Sekcie Webovej Stránky
+## 🛠️ Setup & Installation
 
-### 1. **Age Verification Modal** 🔞
-- Overenie veku pri prvej návšteve
-- LocalStorage pamätanie verifikácie
-- Moderný dizajn s varovaniami
+### Quick Start
+1. Simply open `index.html` in any modern browser
+2. No build process required - pure HTML/CSS/JS
 
-### 2. **Navigation** 🧭
-- Sticky navbar s scroll efektom
-- Hamburger menu pre mobily
-- Smooth scroll k sekciám
-- Animované hover stavy
-
-### 3. **Hero Section** 🌟
-- Masívny nadpis s gradientom
-- Particles.js pozadie
-- Animované pery a vrecúška (floating)
-- Štatistiky (24/7, 50+ príchutí, 10+ lokalít)
-- CTA tlačidlá
-- Scroll indikátor
-
-### 4. **Features** ⚡
-- 4 key features v grid layoute
-- Ikony s gradientmi
-- Hover lift efekty
-- Responzívny layout
-
-### 5. **Products** 🛍️
-- 4 kategórie produktov:
-  - Strong Pouches (20-50mg)
-  - Medium Pouches (10-20mg)
-  - Light Pouches (4-10mg)
-  - Premium Vapes (limitka)
-- Product badges (Top, Nové, Special)
-- Príchute tagy
-- Flip animácie pri zobrazení
-
-### 6. **How To** 📖
-- 3-step proces:
-  1. Nájdi automat
-  2. Vyber produkt
-  3. Zaplať & užívaj
-- Vizualizácia pier s vrecúškom
-- Arrows medzi krokmi
-- Animated lips SVG
-
-### 7. **Locations** 📍
-- Zoznam automatov po Slovensku
-- Status badges (Aktívny/Čoskoro)
-- Mapa placeholder
-- Hover efekty na položkách
-
-### 8. **Contact** 📧
-- Kontaktný formulár
-- Email, telefón, Instagram info
-- Notifikácie pri odoslaní
-- Responzívny grid layout
-
-### 9. **Footer** 📄
-- Brand info a sociálne siete
-- Rýchle linky
-- Newsletter form
-- Právne informácie
-- Copyright a varovania
-
-## 🎯 Technológie
-
-### Frontend
-- **HTML5** - Sémantická štruktúra
-- **CSS3** - Moderné vlastnosti (Grid, Flexbox, Custom Properties)
-- **JavaScript (ES6+)** - Interaktivita a animácie
-
-### Knižnice
-- **[AOS](https://michalsnik.github.io/aos/)** (v2.3.1) - Animate On Scroll
-- **[Particles.js](https://vincentgarreau.com/particles.js/)** (v2.0.0) - Particle efekty
-- **[Font Awesome](https://fontawesome.com/)** (v6.4.0) - Ikony
-- **[Google Fonts](https://fonts.google.com/)** - Poppins & Bebas Neue
-
-## 💻 Inštalácia a Použitie
-
-### Základné Použitie
-1. Klonuj alebo stiahni projekt
-2. Otvor `index.html` v prehliadači
-3. Stránka je ready! 🎉
-
-### Pre Vývoj
+### Local Development
 ```bash
-# Použite live server pre hot reload
-# Napríklad VS Code Live Server extension
-# Alebo Python simple server:
+# Option 1: Python simple server
 python -m http.server 8000
 
-# Alebo Node.js http-server:
+# Option 2: PHP server
+php -S localhost:8000
+
+# Option 3: Node.js server
 npx http-server
 ```
 
-### Deployment
-Stránka je statická a môže byť nasadená na:
-- GitHub Pages
-- Netlify
-- Vercel
-- Akýkoľvek web hosting
+Then open `http://localhost:8000` in your browser.
 
-## 🎨 Prispôsobenie
+## 🎯 Customization Guide
 
-### Farby
-Zmeň CSS premenné v `:root`:
+### Change Colors
+Edit CSS variables in `styles.css` (lines 15-28):
 ```css
 :root {
     --primary-red: #ff0080;
     --primary-pink: #ff6b9d;
     --dark-red: #d4006d;
-    --light-pink: #ffb3d9;
-    --accent-purple: #8b5cf6;
+    /* ... more colors */
 }
 ```
 
-### Obsah
-- Upravuj text v `index.html`
-- Pridaj nové sekcie kopírovaním existujúcich
-- Zmeň obrázky a ikony
+### Add Logo
+1. Place your logo in `images/logo.png` or `images/logo.svg`
+2. Logo is already configured in the navigation
+3. Recommended size: 200x80px (2x for retina)
 
-### Animácie
-- Nastavenia AOS v `script.js`:
-```javascript
-AOS.init({
-    duration: 1000,
-    easing: 'ease-out-cubic',
-    once: true,
-    offset: 100
-});
+### Update Content
+All text content is in Slovak in `index.html`:
+- Hero section: Lines 79-153
+- Products: Lines 287-363
+- Locations: Lines 459-521
+- Contact: Lines 528-580
+
+### Add Locations
+Edit location items in `index.html` (lines 459-509):
+```html
+<div class="location-item">
+    <div class="location-icon">
+        <i class="fas fa-map-marker-alt"></i>
+    </div>
+    <div class="location-info">
+        <h4>Your City - Location Name</h4>
+        <p>Address details</p>
+        <span class="location-status active">Aktívny</span>
+    </div>
+</div>
 ```
 
-## 📱 Responzívne Breakpointy
+## 📱 Responsive Breakpoints
 
-- **Desktop**: > 968px
-- **Tablet**: 768px - 968px
-- **Mobile**: < 768px
-- **Small Mobile**: < 480px
+- **Desktop**: 1200px+
+- **Tablet**: 768px - 1199px
+- **Mobile**: 320px - 767px
 
-## ⚡ Výkonnostné Funkcie
+All sections are fully optimized for mobile viewing with adjusted layouts.
 
-- Lazy loading obrázkov
-- Optimalizované animácie (GPU acceleration)
-- Debounced scroll listeners
-- Intersection Observer API
-- Minimálne DOM manipulácie
+## 🎨 Brand Guidelines
 
-## 🎭 Špeciálne Funkcie
+### Typography
+- **Headings**: Bebas Neue (display font, all caps)
+- **Body**: Poppins (clean, modern sans-serif)
+- **Letter spacing**: 1-3px for headings
 
-### Easter Eggs 🥚
-- **Konami Code**: ↑ ↑ ↓ ↓ ← → ← → B A
-- **Cursor Trail**: Myš zanecháva ružovú stopu
-- **Console Art**: Otvor developer console pre prekvapenie
+### Colors
+- **Primary**: #ff0080 (Hot Pink/Red) - Main CTA, highlights
+- **Secondary**: #ff6b9d (Light Pink) - Accents, hover states
+- **Accent**: #8b5cf6 (Purple) - Special elements
+- **Dark**: #0a0a0f - Background
+- **Card**: #1a1a24 - Card backgrounds
 
-### Interaktívne Prvky
-- Click na pery pre pulse efekt
-- Hover na produkty pre scale & rotate
-- Parallax scroll na hero sekcii
-- Typing efekt na subtitle
-- Counter animácia pre štatistiky
+### Imagery
+- Focus on lips, nicotine pouches, modern gradients
+- Use vibrant colors with glow effects
+- SVG graphics for scalability
 
-## 🔒 Bezpečnosť a Compliance
+## 🔒 Age Verification
 
-- ✅ Age verification (18+)
-- ✅ Varovania o nikotíne
-- ✅ LocalStorage pre verifikáciu
-- ⚠️ Upozornenie: "Nikotín je návyková látka"
+The website includes an 18+ age verification modal that:
+- Appears on first visit
+- Stores verification in localStorage
+- Blocks users under 18
+- Complies with nicotine product regulations
 
-## 🌐 Prehliadače
+## ⚡ Performance
 
-Testované a podporované:
-- ✅ Chrome (latest)
-- ✅ Firefox (latest)
-- ✅ Safari (latest)
-- ✅ Edge (latest)
+- Optimized animations with CSS transforms
+- Lazy loading ready (can be enabled)
+- Minimal dependencies (CDN loaded)
+- Fast initial load time
+- Smooth 60fps animations
+
+## 🌐 Browser Support
+
+- ✅ Chrome 90+
+- ✅ Firefox 88+
+- ✅ Safari 14+
+- ✅ Edge 90+
 - ✅ Mobile browsers (iOS Safari, Chrome Mobile)
 
-## 📊 SEO Optimalizácia
+## 📝 SEO & Meta Tags
 
-- Meta tags pre description
-- Semantic HTML5 elementy
-- Proper heading hierarchy (h1, h2, h3)
-- Alt texty pre obrázky (ak sú použité)
-- Fast loading times
-- Mobile-first approach
+Meta tags included:
+- Description
+- Viewport for mobile
+- Charset UTF-8
+- Title: "Podperos - Tvoj Nový Spôsob"
 
-## 🎓 Učebné Zdroje
+## 🎁 Easter Eggs
 
-Táto stránka demonštruje:
-- Modern CSS Grid & Flexbox
-- Advanced CSS animations
-- JavaScript DOM manipulation
-- Intersection Observer API
-- LocalStorage API
-- Custom scrollbar styling
-- SVG animations
-- Responsive design patterns
-- Performance optimization
+Try the Konami code: ↑ ↑ ↓ ↓ ← → ← → B A
 
-## 📝 Budúce Vylepšenia
+## 📄 License & Usage
 
-- [ ] Integrácia s backend API
-- [ ] Real-time mapa automatov (Google Maps API)
-- [ ] Online objednávkový systém
-- [ ] Blog sekcia
-- [ ] Multi-language support (SK/CZ/EN)
-- [ ] Dark/Light mode toggle
-- [ ] PWA (Progressive Web App)
-- [ ] Product rating system
-- [ ] Customer reviews
-- [ ] Instagram feed integration
+This website is custom-built for Podperos. All rights reserved.
 
-## 🤝 Prispievanie
+**Warning**: Nikotín je návyková látka. Produkty sú určené výhradne pre dospelých 18+
 
-Ak chceš prispieť k projektu:
-1. Fork repository
-2. Vytvor feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit zmeny (`git commit -m 'Add some AmazingFeature'`)
-4. Push do branch (`git push origin feature/AmazingFeature`)
-5. Otvor Pull Request
+## 🤝 Support
 
-## 📄 Licencia
+For questions or support:
+- Email: info@podperos.sk
+- Phone: +421 900 123 456
+- Instagram: @podperos
 
-Tento projekt je vytvorený pre spoločnosť Podperos.
-Všetky práva vyhradené © 2024 Podperos
+## 🚀 Deployment
 
-## ⚠️ Disclaimer
+### Static Hosting (Recommended)
+- **Netlify**: Drag & drop deployment
+- **Vercel**: Connect GitHub repo
+- **GitHub Pages**: Push to gh-pages branch
+- **Firebase Hosting**: `firebase deploy`
 
-**Tento web obsahuje informácie o nikotínových produktoch.**
+### Traditional Hosting
+Upload all files via FTP to your web server's public directory.
 
-Nikotín je vysoko návyková látka. Produkty sú určené výhradne pre dospelých používateľov tabakových výrobkov alebo nikotínu. Nie sú určené pre:
-- Osoby mladšie ako 18 rokov
-- Tehotné alebo dojčiace ženy
-- Osoby s kardiovaskulárnymi ochoreniami
-- Nefajčiarov
+## 📊 Analytics
 
-## 📞 Kontakt
+Consider adding:
+- Google Analytics for tracking
+- Facebook Pixel for ads
+- Hotjar for user behavior
 
-- **Email**: info@podperos.sk
-- **Telefón**: +421 900 123 456
-- **Instagram**: [@podperos](https://instagram.com/podperos)
-- **Web**: www.podperos.sk
+## 🔄 Future Enhancements
+
+Potential additions:
+- [ ] Online ordering system
+- [ ] Real-time stock availability
+- [ ] Interactive map with Google Maps API
+- [ ] Customer accounts/loyalty program
+- [ ] Blog section for news
+- [ ] Multi-language support (English, Hungarian)
 
 ---
 
-<div align="center">
+**Made with 💋 in Slovakia**
 
-**POD PERAMI. NAD OSTATNÝMI.** 💋
-
-Made with ❤️ and lots of ☕ in Slovakia
-
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-
-</div>
+*Pod perami. Nad ostatnými.*

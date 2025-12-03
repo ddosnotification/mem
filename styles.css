@@ -193,6 +193,23 @@ body {
 .logo {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+}
+
+.logo-image {
+    height: 50px;
+    width: auto;
+    transition: var(--transition-smooth);
+}
+
+.logo-image:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 20px rgba(255, 0, 128, 0.6));
+}
+
+.logo-text-wrapper {
+    display: flex;
+    flex-direction: column;
 }
 
 .logo-text {
